@@ -21,6 +21,12 @@ public class UsrController {
 	@Autowired
 	UsrRepository usrRepository;
 
+	@GetMapping("/")
+    public String index(ModelMap m) {
+		m.addAttribute("users", usrRepository.findAll());
+        return "index";
+    }
+
 	@GetMapping("/signup")
     public String showSignUpForm(ModelMap m) {
 		Usr user = new Usr();
